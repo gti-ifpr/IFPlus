@@ -1,0 +1,20 @@
+Sempre dar atenção ao comandos:
+    npm ls --depth=0
+
+NPM INSTALL - back-end
+    npm install mysql2
+    npm install sequelize
+    npm install dotenv --save
+
+1° - Criar um banco de dados
+    Todos os dados foram colocados no .env
+
+2° - O back-end foi testado usando o insomina antes de haver um front-end
+
+3° - Para rodar o bacn-end use o comando node --watch src/server.js a partir da pasta back-end
+
+4° - A conexão com o banco de dados usa o sequelize como ORM e utiliza o mysql (mysql + sequelize -> https://sequelize.org/docs/v7/other-topics/dialect-specific-things/#mysql)
+
+5° - As models foram criadas baseadas em herança
+
+Nessa aplicação back-end. Primeiramente foi criado um server usanso a biblioteca http do próprio node (https://nodejs.org/en/docs/guides/anatomy-of-an-http-transaction)

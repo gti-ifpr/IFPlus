@@ -1,0 +1,5 @@
+# Ignorar o package.json dentro da pasta back-end
+back-end/*/package.json
+
+# Ignorar o package.json dentro da pasta front-end
+front-end/*/package.json
