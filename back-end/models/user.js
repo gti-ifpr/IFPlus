@@ -17,7 +17,7 @@ User.init(
         },
         user_nome:{
             type: Sequelize.CHAR(100),
-            allowNull: false
+            allowNull: false,
         },
         user_cpf:{
             type: Sequelize.CHAR(14),
