@@ -3,6 +3,8 @@ import User from '/var/www/newIfplus/back-end/models/user.js'
 import UserAluno from '../models/userAluno.js';
 import UserServidor from '../models/userServidor.js';
 
+//criar rotas para listar usuários e contratos, criar rotas para editar todas as tabelas e também de excluir
+
 const server = http.createServer((request, response) => {
     
     const { method, url } = request;

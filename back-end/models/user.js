@@ -3,7 +3,6 @@ import sequelizeDB from '/var/www/newIfplus/back-end/src/connection.js'
 import { Model, Sequelize } from 'sequelize';
 //Essa importação está desestruturando as classes DataTypes e Model do objeto sequelize. Essas classes são partes fundamentais do Sequelize para definir modelos e tipos de dados para os atributos do modelo.
 
-
 //O Sequelize fornece uma classe chamada Model para criar os próprios modelos.
 class User extends Model {}
 

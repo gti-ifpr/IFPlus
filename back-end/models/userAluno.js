@@ -7,6 +7,13 @@ class UserAluno extends User {}
 UserAluno.init(
     //atributos (id, nome, cpf, email, telefone, createdAt, updatedAt, deletedAt já foram configurados na classe modelo User)
     {
+        userAluno_id:{
+            type: Sequelize.UUID,
+            references:{
+                model: User,
+                key: 'user_id',
+            }
+        },
         userAluno_rg:{
             type: Sequelize.CHAR(9),
             allowNull: false,

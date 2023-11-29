@@ -7,6 +7,13 @@ class UserServidor extends User {}
 UserServidor.init(
     //atributos (id, nome, cpf, email, telefone, createdAt, updatedAt, deletedAt já foram configurados na classe modelo User)
     {
+        userServidor_id:{
+            type: Sequelize.UUID,
+            references:{
+                model: User,
+                key: 'user_id',
+            }
+        },
         userServidor_Siape:{
             type: Sequelize.CHAR(15),
             allowNull: false,

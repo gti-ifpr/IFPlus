@@ -17,7 +17,10 @@ NPM INSTALL - back-end
 
 5° - As models foram criadas baseadas em herança
     A model User é a tabela pai da model UserAluno e UserServidor
+    A model Contratos referencias as models UserAluno e UserServidor, que por sua vez referenciam User.
 
-    Nessa aplicação back-end. Primeiramente foi criado um server usanso a biblioteca http do próprio node (https://nodejs.org/en/docs/guides/anatomy-of-an-http-transaction)
+6° - Server.js
+    Nessa aplicação back-end. Primeiramente foi criado um server usanso a biblioteca http do próprio node
+    (https://nodejs.org/en/docs/guides/anatomy-of-an-http-transaction)
 
-    Em seguida, todas as rotas da aplicação estão no server.js
+    Em seguida, todas as rotas da aplicação estão no server.js e foram configuradas por lá
