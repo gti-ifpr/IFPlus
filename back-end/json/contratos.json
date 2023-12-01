@@ -1,0 +1,17 @@
+{
+  "conAlu": "Mauro Jesus",
+  "conSer": "Ciclano dos Santos",
+  "con_organizacaoConcedente": "IFPlus",
+  "con_centroIntegrador": "UFCG",
+  "con_numeroEstagio": "20231130-001",
+  "con_numeroApolice": "1234567890",
+  "con_orientadorCampus": "Professor Fulano",
+  "con_dataInicio": "2023-11-30",
+  "con_dataTermino": "2024-11-30",
+  "con_atividadesDesenvolvidas": "Desenvolver aplicação web para gerenciamento de projetos.",
+  "con_supervisorEstagio": "Analista de Sistemas Ciclano",
+  "con_horarioInicio": "08:00",
+  "con_horarioTermino": "17:00",
+  "con_valorHora": 25.00,
+  "con_EstagioAtivo": true
+}

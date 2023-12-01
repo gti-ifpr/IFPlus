@@ -1,18 +1,34 @@
 import sequelizeDB from '/var/www/newIfplus/back-end/src/connection.js'
-import { Sequelize } from 'sequelize';
-import User from '/var/www/newIfplus/back-end/models/user.js';
+import { Sequelize, Model } from "sequelize";
 
-class UserServidor extends User {}
+class UserServidor extends Model {}
 
 UserServidor.init(
     //atributos (id, nome, cpf, email, telefone, createdAt, updatedAt, deletedAt já foram configurados na classe modelo User)
     {
-        userServidor_id:{
+        userServidor_id: {
             type: Sequelize.UUID,
-            references:{
-                model: User,
-                key: 'user_id',
-            }
+            defaultValue: Sequelize.UUIDV4,
+            primaryKey: true,
+            unique: true,
+            allowNull: false,
+        },
+        userServidor_nome:{
+            type: Sequelize.CHAR(100),
+            allowNull: false,
+        },
+        userServidor_cpf:{
+            type: Sequelize.CHAR(11),
+            allowNull: false,
+            unique: true,
+        },
+        userServidor_email:{
+            type: Sequelize.CHAR(100),
+            allowNull: false,
+        },
+        userServidor_telefone: {
+            type: Sequelize.CHAR(15),
+            allowNull: false,
         },
         userServidor_Siape:{
             type: Sequelize.CHAR(15),
@@ -39,7 +55,19 @@ UserServidor.init(
         userServidor_Campus:{
             type: Sequelize.CHAR(30),
             allowNull: false
-        }
+        },
+        createdAt: {
+            type: Sequelize.DATE,
+            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'), // Define o valor padrão como a data e hora atual
+        },
+        updatedAt: {
+            type: Sequelize.DATE,
+            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'), // Define o valor padrão como a data e hora atual
+        },
+        deletedAt:{
+            type: Sequelize.DATE,
+            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'), // Define o valor padrão como a data e hora atual
+        },
     },
     {
         sequelize: sequelizeDB,

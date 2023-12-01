@@ -1,11 +1,9 @@
 import { Sequelize, Model } from "sequelize";
 import sequelizeDB from '/var/www/newIfplus/back-end/src/connection.js'
-import UserAluno from "./userAluno";
-import UserServidor from "./userServidor";
 
-class Contratos extends Model {}
+class Contrato extends Model {}
 
-Contratos.init(
+Contrato.init(
     //atributos
     {
         con_id: {
@@ -13,21 +11,13 @@ Contratos.init(
             defaultValue: Sequelize.UUIDV4,
             primaryKey: true,
         },
-        conAlu_id: {
-            type: Sequelize.UUID,
+        conAlu: {
+            type: Sequelize.CHAR(100),
             allowNull: false,
-            references: {
-                model: UserAluno,
-                key: 'userAluno_id',
-            }
         },
-        conSer_id: {
-            type: Sequelize.UUID,
+        conSer: {
+            type: Sequelize.CHAR(100),
             allowNull: false,
-            references: {
-                model: UserServidor,
-                key: 'userServidor_id',
-            }
         },
         con_organizacaoConcedente: {
             type: Sequelize.CHAR(100),
@@ -51,11 +41,11 @@ Contratos.init(
             allowNull: false,
         },
         con_dataInicio: {
-            type: Sequelize.ONLYDATE(),
+            type: Sequelize.DATEONLY(),
             allowNull: false,
         },
         con_dataTermino: {
-            type: Sequelize.ONLYDATE(),
+            type: Sequelize.DATEONLY(),
             allowNull: true,
         },
         con_atividadesDesenvolvidas: {
@@ -89,6 +79,10 @@ Contratos.init(
         updatedAt: {
             type: Sequelize.DATE,
             defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'), // Define o valor padrão como a data e hora atual
+        },
+        deletedAt:{
+            type: Sequelize.DATE,
+            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'), // Define o valor padrão como a data e hora atual
         }
     },
     {
@@ -101,7 +95,7 @@ Contratos.init(
 );
 
 //verifica se a tabela existe no banco de dados, se ela não existe, o sequelize irá criar
-Contratos.sync()
+Contrato.sync()
     .then(() => {
         console.log('Tabela Contratos sincronizada com sucesso.');
     })
@@ -109,4 +103,4 @@ Contratos.sync()
         console.error('Erro ao sincronizar tabela Contratos:', error);
 });
 
-export default Contratos;
+export default Contrato;
