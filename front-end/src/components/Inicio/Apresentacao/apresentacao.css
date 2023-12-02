@@ -1,0 +1,27 @@
+.container{
+    display: flex;
+    justify-content: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #000;
+}
+
+.component{
+    margin-right: 2%;
+    text-align: center;
+    /* border: 1px solid black; */
+    max-width: 25%;
+}
+
+.component h1{
+    font-size: 1.8rem;
+    color: #4CAF50;
+}
+
+.component p{
+    font-size: 1.3rem;
+    text-align: justify;
+}
+
+hr{
+    width: 80%;
+}

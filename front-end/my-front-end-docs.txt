@@ -1,0 +1,16 @@
+Dependencias a serem instaladas dentro do diretorio front-end:
+    npm install react-router-dom
+    npm install axios
+
+1° - Instalação do projeto com:
+    npx create-react-app front-end
+
+2° - Exclusão de arquivos desnecessário
+
+3° - Criação das rotas na raiz do diretório front-end como routes.js, que por sua vez será importado por app.js
+também na raiz
+
+4° - Criação da página Inicio e seus respectivos componentes
+
+5° - Criação da página login com seus componentes
+

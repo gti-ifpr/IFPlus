@@ -40,7 +40,7 @@ const server = http.createServer(async (request, response) => {
                 response.end('erro ao adicionar o usuário')   
             }
         });
-    } 
+    }
     
     if (method === 'GET' && url === '/listUserAlunos'){
         try {
@@ -108,7 +108,7 @@ const server = http.createServer(async (request, response) => {
             }
         });
     }
-    
+
     if (method === 'GET' && url === '/listContratos'){
         try {
             const allContratos = await Contrato.findAll();
