@@ -1,0 +1,38 @@
+#keywords {
+    width: 90vw;
+    margin: 0 auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 20px; /* Define o raio das bordas */
+    overflow: hidden; /* Garante que as bordas arredondadas sejam exibidas corretamente */
+}
+
+#keywords thead {
+    background: #4CAF50;
+    color: #fff;
+    border-top-right-radius: 20px; /* Raio apenas na borda superior direita */
+    border-top-left-radius: 20px; /* Raio apenas na borda superior esquerda */
+}
+#keywords thead tr th {
+    font-weight: bold;
+    padding: 12px 30px;
+    padding-left: 42px;
+}
+
+#keywords tbody tr {
+    color: #555;
+}
+#keywords tbody tr td {
+    text-align: center;
+    padding: 15px 10px;
+}
+
+#keywords tbody tr:nth-child(even) {
+    background-color: #6ab36e;
+    color: #fff;
+
+}
+
+#keywords tbody tr:nth-child(odd) {
+    background-color: #fff; /* Define a cor de fundo para as linhas ímpares */
+}
