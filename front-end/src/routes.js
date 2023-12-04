@@ -6,7 +6,7 @@ import Login from './pages/Login/Login.js'
 import CadastroAluno from './pages/CadastroAluno/cadastroAlunoPage.js'
 import CadastroServidor from './pages/CadastroServidor/cadastroServidor.js'
 import Contratos from './pages/Contratos/contratos.js'
-import Perfil from './pages/Contratos/contratos.js'
+import Perfil from './pages/Perfil/perfil.js'
 import Vagas from './pages/Vagas/vagas.js'
 
 

@@ -1,5 +1,5 @@
 import React from "react";
-import Menu from "../../components/global/menu/Menu";
+import Menu from "../../components/Global/menu/menu.js";
 import CadastroServidorForm from "../../components/Cadastro/cadastroServidor.js"
 
 const menuItems = [

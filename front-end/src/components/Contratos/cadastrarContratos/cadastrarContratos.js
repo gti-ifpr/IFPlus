@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import '../../../css/form.css'
+import './cadastrarContratos.css'
 import axios from 'axios';
 
 function CadastrarContrato() {

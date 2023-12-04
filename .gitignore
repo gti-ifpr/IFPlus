@@ -1,5 +1,5 @@
 # Ignorar o package.json dentro da pasta back-end
-back-end/*/package.json
+back-end/*/node_modules
 
 # Ignorar o package.json dentro da pasta front-end
-front-end/*/package.json
+front-end/*/pnode_modules

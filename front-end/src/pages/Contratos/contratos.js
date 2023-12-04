@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import Menu from '../../components/Global/menu/menu.js';
 import Botoes from '../../components/Global/botoes/botoes.js';
 
-import CadastrarContrato from "../../components/contratos/cadastrarContrato/cadastrarContrato";
-import ListarContratos from "../../components/contratos/listarContratos/listarContratos";
+import CadastrarContrato from "./../../components/Contratos/cadastrarContratos/cadastrarContratos.js";
+import ListarContratos from "../../components/Contratos/listarContratos/listarContratos.js";
 
 const menuItems = [
     { text: 'Login', link: '/login' }
