@@ -1,6 +1,8 @@
 import React from "react";
 import Menu from "../../components/Global/menu/menu.js";
 import LoginForm from '../../components/Login/formAuth/formAuth.js'
+import { UserProvider } from './../../context/UserContext.js';
+
 
 const menuItems = [
     { text: 'Início', link: '/' },
@@ -12,9 +14,11 @@ function Login (){
     return(
         <>
             <Menu items={menuItems}/>,
-            <LoginForm/>
+            <UserProvider>
+                <LoginForm/>
+            </UserProvider>
         </>
     )
 }
 
-export default Login
+export default Login;

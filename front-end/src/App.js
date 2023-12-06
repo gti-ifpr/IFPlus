@@ -1,16 +1,19 @@
 import React from 'react';
-import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import MyRoutes from './routes';
+import { UserProvider } from './context/UserContext.js';
 
 const App = () => {
-
   return (
-    <>
-      <BrowserRouter>
-        <MyRoutes/>
-      </BrowserRouter>
-    </>
+
+    <BrowserRouter>
+
+      <UserProvider>
+        <MyRoutes />
+      </UserProvider>
+      
+    </BrowserRouter>
+
   );
 };
 

@@ -1,7 +1,7 @@
-
-import React, { useState } from "react";
-import axios from 'axios'
+import React, { useState, useContext } from "react";
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from './../../../context/UserContext.js';
 
 import './formAuth.css'
 import LoginImg from '../../../img/login.jpg'
@@ -11,7 +11,7 @@ function LoginForm() {
     const [userAluno_cpf, setCPF] = useState("");
     const [password, setPassword] = useState("");
     const [option, setOption] = useState("");
-
+    const { setUserInfo } = useContext(UserContext);
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
@@ -39,10 +39,11 @@ function LoginForm() {
             );
 
             if (response.status === 200 && response.data.success) {
+                setUserInfo(response.data.user);
                 if (option === 'aluno') {
-                navigate(`/perfil/`);
+                    navigate(`/perfil/`);
                 } else {
-                navigate('/contratos');
+                    navigate('/contratos');
                 }
             } else {
                 console.error(`Erro no login de ${option}: ${response.data.message} ${formData}`);
