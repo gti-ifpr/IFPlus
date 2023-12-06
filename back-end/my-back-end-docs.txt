@@ -5,6 +5,8 @@ NPM INSTALL - back-end
     npm install mysql2
     npm install sequelize
     npm install dotenv --save
+    npm install cors
+    npm install jsonwebtoken
 
 1° - Criar um banco de dados
     Todos os dados foram colocados no .env

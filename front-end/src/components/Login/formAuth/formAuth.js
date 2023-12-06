@@ -8,54 +8,47 @@ import LoginImg from '../../../img/login.jpg'
 
 function LoginForm() {
 
-    const [login_cpf, setCPF] = useState("");
+    const [userAluno_cpf, setCPF] = useState("");
     const [password, setPassword] = useState("");
     const [option, setOption] = useState("");
 
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
-
         event.preventDefault(true)
 
-        console.log(option)
+        try {
+            const formData = {
+                userAluno_cpf: option === 'aluno' ? userAluno_cpf : null,
+                ser_cpf: option === 'servidor' ? userAluno_cpf : null,
+                userAluno_Senha: password,
+                ser_senha: password,
+            };
 
-        if (option === "aluno"){
-            try {
-                const formData = {
-                    alu_cpf: login_cpf,
-                    alu_senha: password
-                };
-                console.log(formData)
-                const response = await axios.post('http://localhost:3333/loginAuthAluno', formData);
-                console.log("Servidor respondeu:", response.data);
+            // console.log(formData)
+            //esse console log é somente para teste. No dev tools, ele aparece para saber o que o formulário está enviando e se está enviando
 
-                if (response.status === 200 && response.data.success) {
-                    navigate(`/perfil/${login_cpf}`);
+            const response = await axios.post(
+                option === 'aluno' ? 'http://localhost:3333/loginAuthAluno' : 'http://localhost:3333/loginAuthServidor',
+                formData,
+                {
+                    userAluno_cpf: option === 'aluno' ? userAluno_cpf : null,
+                    userAluno_senha: password,
+                },
+                { withCredentials: true }
+            );
+
+            if (response.status === 200 && response.data.success) {
+                if (option === 'aluno') {
+                navigate(`/perfil/`);
                 } else {
-                    console.error("Erro no login de aluno:", response.data.message);
+                navigate('/contratos');
                 }
-            } catch (error) {
-                console.error("Erro no login de aluno:", error);
+            } else {
+                console.error(`Erro no login de ${option}: ${response.data.message} ${formData}`);
             }
-        }
-        if (option === "servidor"){
-            try {
-                const formData = {
-                    ser_cpf: login_cpf,
-                    ser_senha: password
-                };
-                console.log(formData)
-                const response = await axios.post('http://localhost:3333/loginAuthServidor', formData);
-        
-                if (response.status === 200 && response.data.success) {
-                  navigate('/contratos');
-                } else {
-                  console.error('Erro - login do Servidor', response.data.message);
-                }
-              } catch (error) {
-                console.error('Erro no login do Servidor', error);
-            }
+        } catch (error) {
+        console.error(`Erro no login de ${option}:`, error);
         }
     };
 
@@ -77,8 +70,8 @@ function LoginForm() {
                             </select>
                         </div>
                         <div className="form-group">    
-                            <input placeholder="Seu CPF" type="number" id="login_cpf" autocomplete="new-cpf"
-                                value={login_cpf} onChange={(event) => setCPF(event.target.value)} required
+                            <input placeholder="Seu CPF" type="text" id="login_cpf" autocomplete="new-cpf"
+                                value={userAluno_cpf} onChange={(event) => setCPF(event.target.value)} required
                             />
                         </div>
                         <div className="form-group">

@@ -1,12 +1,35 @@
-import http, { request } from 'node:http';
+import http from 'node:http';
+import cors from 'cors';
 import UserAluno from '../models/userAluno.js';
 import UserServidor from '../models/userServidor.js';
 import Contrato from '../models/contratos.js'
+import jwt from 'jsonwebtoken';
 
 //criar rotas para listar usuários e contratos, criar rotas para editar todas as tabelas e também de excluir
 
 const server = http.createServer(async (request, response) => {
     
+    // Configurar o middleware CORS
+    const corsOptions = {
+        origin: 'http://localhost:3000', // url do front-end
+        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+        credentials: true, // Permite o envio de credenciais (por exemplo, cookies)
+        optionsSuccessStatus: 204, // Responde com 204 No Content para solicitações OPTIONS
+        allowedHeaders: ['Content-Type', 'Authorization']
+    };
+
+    // Middleware CORS personalizado
+    const handleCors = (req, res) => {
+        res.setHeader('Access-Control-Allow-Origin', corsOptions.origin);
+        res.setHeader('Access-Control-Allow-Headers', corsOptions.allowedHeaders.join(', '));
+        res.setHeader('Access-Control-Allow-Methods', corsOptions.methods);  
+    };
+
+    // Aplica o middleware CORS a todas as solicitações
+    handleCors(request, response);
+
+    cors(corsOptions)(request, response, () => {});
+
     const { method, url } = request;
 
     //rota para criação de usuários do tipo aluno
@@ -122,8 +145,50 @@ const server = http.createServer(async (request, response) => {
             return;
         }
     };
+  
+    if (method === 'POST' && url === '/loginAuthAluno') {
+        
+        let data = '';
 
-    return response.end('Executing server - back-end with method: ' + method + ' on url ' + url)
+        request.on('data', (chunk) => {
+            data += chunk;
+        });
+    
+        request.on('end', async () => {
+            const formData = JSON.parse(data);
+            const loginCPF = formData.userAluno_cpf;
+            const password = formData.userAluno_senha;
+    
+            try {
+                const aluno = await UserAluno.findOne({ where: { userAluno_cpf: loginCPF } });
+        
+                if (!aluno) {
+                    response.writeHead(401, { 'Content-Type': 'application/json' });
+                    response.end(JSON.stringify({ message: 'CPF do aluno não encontrado' }));
+                    return; // Certifique-se de retornar após a resposta ser encerrada
+                }
+        
+                if (aluno.userAluno_senha !== password) {
+                    response.writeHead(401, { 'Content-Type': 'application/json' });
+                    response.end(JSON.stringify({ message: 'CPF ou senha incorreto' }));
+                    return; // Certifique-se de retornar após a resposta ser encerrada
+                }
+        
+                const token = jwt.sign({ userId: aluno.alu_id, username: aluno.alu_nome }, 'seuSegredo', {
+                    expiresIn: '1h',
+                });
+        
+                response.writeHead(200, { 'Content-Type': 'application/json' });
+                response.end(JSON.stringify({ success: true, token }));
+            } catch (error) {
+                console.error('Erro ao processar a autenticação do aluno:', formData, error);
+                response.writeHead(500, { 'Content-Type': 'application/json' });
+                response.end(JSON.stringify({ message: 'Erro ao processar a autenticação do aluno' }));
+            }
+        });
+    }
+
+    // return response.end('Executing server - back-end with method: ' + method + ' on url ' + url)
 })
 
 server.listen(3333);

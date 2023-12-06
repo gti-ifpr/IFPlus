@@ -1,6 +1,7 @@
 Dependencias a serem instaladas dentro do diretorio front-end:
     npm install react-router-dom
     npm install axios
+    npm install cors
 
 1° - Instalação do projeto com:
     npx create-react-app front-end

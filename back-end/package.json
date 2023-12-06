@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/gabrielubiale/newIfplus#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
+    "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.6.5",
     "sequelize": "^6.35.1"
   }
