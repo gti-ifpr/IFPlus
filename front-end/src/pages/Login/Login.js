@@ -1,7 +1,6 @@
 import React from "react";
 import Menu from "../../components/Global/menu/menu.js";
 import LoginForm from '../../components/Login/formAuth/formAuth.js'
-import { UserProvider } from './../../context/UserContext.js';
 
 
 const menuItems = [
@@ -13,10 +12,8 @@ const menuItems = [
 function Login (){
     return(
         <>
-            <Menu items={menuItems}/>,
-            <UserProvider>
+                <Menu items={menuItems}/>,
                 <LoginForm/>
-            </UserProvider>
         </>
     )
 }

@@ -1,18 +1,30 @@
+// Login.js
 import React from "react";
 import Menu from '../../components/Global/menu/menu.js'
+import CardVaga from '../../components/Vagas/cardVagas/cardVagas.js'
+import './vagas.css'
 
 const menuItems = [
     { text: 'Início', link: '/' },
     { text: 'Perfil', link: '/perfil' },
     { text: 'Meus contratos', link: '/contratos'}
-  ];
+];
 
-function Login (){
-    return(
+const vagaInfo = [
+    { titulo: "Estágio em Desenvolvimento Web", nomeDoLugar: "Empresa XYZ", horarioDisponivel: "13:00 às 19:00" },
+    { titulo: "Estágio em Desenvolvimento Web", nomeDoLugar: "Empresa XYZ", horarioDisponivel: "13:00 às 19:00" },
+    { titulo: "Estágio em Desenvolvimento Web", nomeDoLugar: "Empresa XYZ", horarioDisponivel: "13:00 às 19:00" }
+];
+
+function Login() {
+    return (
         <>
-            <Menu items={menuItems}/>
-
-            <h1>teste paǵina de vagas</h1>
+            <Menu items={menuItems} />
+            <div className="card-line">
+                <CardVaga {...vagaInfo[0]} />
+                <CardVaga {...vagaInfo[1]} />
+                <CardVaga {...vagaInfo[2]} />
+            </div>
         </>
     )
 }
