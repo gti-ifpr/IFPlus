@@ -6,7 +6,7 @@ import CadastrarContrato from "./../../components/Contratos/cadastrarContratos/c
 import ListarContratos from "../../components/Contratos/listarContratos/listarContratos.js";
 
 const menuItems = [
-    { text: 'Login', link: '/login' }
+    { text: 'Início', link: '/' }
 ];
 
 const botoes = [

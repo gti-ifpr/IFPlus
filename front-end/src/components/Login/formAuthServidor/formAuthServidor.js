@@ -5,9 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import './formAuth.css'
 import LoginImg from '../../../img/login.jpg'
 
-function LoginForm() {
+function LoginFormServidor() {
 
-    const [userAluno_cpf, setCPF] = useState("");
+    const [userServidor_cpf, setCPF] = useState("");
     const [password, setPassword] = useState("");
 
     const navigate = useNavigate();
@@ -17,22 +17,22 @@ function LoginForm() {
 
         try {
             const formData = {
-                userAluno_cpf: userAluno_cpf,
-                userAluno_Senha: password
+                userServidor_cpf: userServidor_cpf,
+                userServidor_Senha: password
             };
 
             // console.log(formData)
             //esse console log é somente para teste. No dev tools, ele aparece para saber o que o formulário está enviando e se está enviando
 
-            const response = await axios.post('http://localhost:3333/loginAuthAluno', formData,);
+            const response = await axios.post('http://localhost:3333/loginAuthServidor', formData,);
 
             if (response.status === 200 && response.data.success) {
-                  navigate(`/perfil/${userAluno_cpf}`);
+                  navigate(`/contratos`);
               } else {
-                console.error(`Erro no login do Aluno: ${response.data.message} ${formData}`);
+                console.error(`Erro no login do Servidor: ${response.data.message} ${formData}`);
               }
         } catch (error) {
-            console.error(`Erro no login login do Aluno:`, error);
+            console.error(`Erro no login do Servidor:`, error);
         }
     };
 
@@ -43,11 +43,11 @@ function LoginForm() {
             </div>
             <div>
                 <div className="login-form-auth">
-                    <h1>Login de Aluno</h1>
+                    <h1>Login de Servidor</h1>
                     <form onSubmit={handleSubmit}>
                         <div className="form-group">    
-                            <input placeholder="Seu CPF" type="text" id="login_cpf" autocomplete="new-cpf"
-                                value={userAluno_cpf} onChange={(event) => setCPF(event.target.value)} required
+                            <input placeholder="Seu CPF" type="text" id="userServidor_cpf" autocomplete="new-cpf"
+                                value={userServidor_cpf} onChange={(event) => setCPF(event.target.value)} required
                             />
                         </div>
                         <div className="form-group">
@@ -57,7 +57,7 @@ function LoginForm() {
                         </div>
                         <div className="form-group-button">
                             <button type="submit">Entrar</button>
-                            <button onClick={() => navigate("/cadastroAluno")}>Cadastrar como aluno</button>
+                            <button onClick={() => navigate("/cadastroServidor")}>Cadastrar como Servidor</button>
                         </div>
                     </form>
                 </div>
@@ -66,4 +66,4 @@ function LoginForm() {
     );
 }
 
-export default LoginForm;
+export default LoginFormServidor;

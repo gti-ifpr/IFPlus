@@ -33,7 +33,7 @@ function ListarContratos() {
             {data.map((contrato, index) => (
               <tr key={index}>
                 <td>{contrato.con_numeroEstagio}</td>
-                <td>{contrato.con_alu_nome}</td>
+                <td>{contrato.conAlu}</td>
                 <td>{contrato.con_orientadorCampus}</td>
                 <td>{contrato.con_organizacaoConcedente}</td>
                 <td>{contrato.con_dataTermino}</td>

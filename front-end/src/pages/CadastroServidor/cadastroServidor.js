@@ -4,7 +4,7 @@ import CadastroServidorForm from "../../components/Cadastro/cadastroServidor.js"
 
 const menuItems = [
     { text: 'Início', link: '/' },
-    { text: 'Login', link: '/login' },
+    { text: 'Login', link: '/loginServidor' },
     { text: 'Cadastrar como Aluno', link: '/cadastroAluno' },
   ];
 

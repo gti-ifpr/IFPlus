@@ -33,7 +33,7 @@ function CadastroAlunoForm() {
         //event.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:3333/cadastroAluno', formData);
+            const response = await axios.post('http://localhost:3333/addUserAluno', formData);
             console.log("Servidor respondeu:", response.data);
         } catch (error) {
             console.error("Erro ao enviar dados do aluno:", error);
@@ -48,33 +48,33 @@ function CadastroAlunoForm() {
                 <div className="login-form-columns">
                     <div className="login-form-left">
                         <div className="form-group">
-                            <input type="text" id="alu_nome" name="alu_nome" placeholder="Nome completo"
-                                value={formData.alu_nome} onChange={handleInputChange} required
+                            <input type="text" id="userAluno_nome" name="userAluno_nome" placeholder="Nome completo"
+                                value={formData.userAluno_nome} onChange={handleInputChange} required
                             />
                         </div>
                         <div className="form-group">
-                            <input type="text" id="alu_cpf" name="alu_cpf" placeholder="CPF"
-                                value={formData.alu_cpf} onChange={handleInputChange} required
+                            <input type="text" id="userAluno_cpf" name="userAluno_cpf" placeholder="CPF"
+                                value={formData.userAluno_cpf} onChange={handleInputChange} required
                             />
                         </div>
                         <div className="form-group">
-                            <input type="text" id="alu_rg" name="alu_rg" placeholder="RG"
-                                value={formData.alu_rg} onChange={handleInputChange} required
+                            <input type="email" id="userAluno_email" name="userAluno_email" placeholder="E-mail"
+                                value={formData.userAluno_email} onChange={handleInputChange} required
                             />
                         </div>
                         <div className="form-group">
-                            <input type="text" id="alu_matricula" name="alu_matricula" placeholder="Matrícula"
-                                value={formData.alu_matricula} onChange={handleInputChange} required
+                            <input type="tel" id="userAluno_telefone" name="userAluno_telefone" placeholder="Telefone celular"
+                                value={formData.userAluno_telefone} onChange={handleInputChange} required
                             />
                         </div>
                         <div className="form-group">
-                            <input type="email" id="alu_email" name="alu_email" placeholder="E-mail"
-                                value={formData.alu_email} onChange={handleInputChange} required
+                            <input type="text" id="userAluno_rg" name="userAluno_rg" placeholder="RG"
+                                value={formData.userAluno_rg} onChange={handleInputChange} required
                             />
                         </div>
                         <div className="form-group">
-                            <input type="tel" id="alu_telefone" name="alu_telefone" placeholder="Telefone celular"
-                                value={formData.alu_telefone} onChange={handleInputChange} required
+                            <input type="text" id="userAluno_Matricula" name="userAluno_Matricula" placeholder="Matrícula"
+                                value={formData.userAluno_Matricula} onChange={handleInputChange} required
                             />
                         </div>
 
@@ -82,33 +82,42 @@ function CadastroAlunoForm() {
 
                     <div className="login-form-right">
                         <div className="form-group">
-                            <input type="text" id="alu_sexo" name="alu_sexo" placeholder="Sexo"
-                                value={formData.alu_sexo} onChange={handleInputChange} required
+                            <input type="text" id="userAluno_Sexo" name="userAluno_Sexo" placeholder="Sexo"
+                                value={formData.userAluno_Sexo} onChange={handleInputChange} required
                             />
                         </div>
                         <div className="form-group">
-                            <input type="date" id="alu_dataNascimento" name="alu_dataNascimento" placeholder="Data de Nascimento"
-                                value={formData.alu_dataNascimento} onChange={handleInputChange} required
+                            <select id="userAluno_Ativo" name="userAluno_Ativo" value={formData.con_EstagioAtivo}
+                                onChange={handleInputChange} required >
+                                <option value="">Status do Aluno</option>
+                                <option value="1">Ativo</option>
+                                <option value="0">Ex-aluno</option>
+                            </select>
+                        </div>
+                        <div className="form-group">
+                            <label>Data de Nascimento</label>
+                            <input type="date" id="userAluno_Nascimento" name="userAluno_Nascimento" placeholder="Data de Nascimento"
+                                value={formData.userAluno_Nascimento} onChange={handleInputChange} required
                             />
                         </div>
                         <div className="form-group">
-                            <input type="text" id="alu_curso" name="alu_curso" placeholder="Curso"
-                                value={formData.alu_curso} onChange={handleInputChange} required
+                            <input type="text" id="userAluno_Curso" name="userAluno_Curso" placeholder="Curso"
+                                value={formData.userAluno_Curso} onChange={handleInputChange} required
                             />
                         </div>
                         <div className="form-group">
-                            <input type="text" id="alu_periodo" name="alu_periodo" placeholder="Período"
-                                value={formData.alu_periodo} onChange={handleInputChange} required
+                            <input type="text" id="userAluno_Periodo" name="userAluno_Periodo" placeholder="Período"
+                                value={formData.userAluno_Periodo} onChange={handleInputChange} required
                             />
                         </div>
                         <div className="form-group">
-                            <input type="text" id="alu_disponibilidade" name="alu_disponibilidade" placeholder="Disponibilidade"
-                                value={formData.alu_disponibilidade} onChange={handleInputChange} required
+                            <input type="text" id="userAluno_Disponibilidade" name="userAluno_Disponibilidade" placeholder="Disponibilidade"
+                                value={formData.userAluno_Disponibilidade} onChange={handleInputChange} required
                             />
                         </div>
                         <div className="form-group">
-                            <input type="password" id="alu_senha" name="alu_senha" placeholder="Senha"
-                                value={formData.alu_senha} onChange={handleInputChange} required
+                            <input type="password" id="userAluno_Senha" name="userAluno_Senha" placeholder="Senha"
+                                value={formData.userAluno_Senha} onChange={handleInputChange} required
                             />
                         </div>
                     </div>

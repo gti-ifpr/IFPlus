@@ -79,6 +79,32 @@ const server = http.createServer(async (request, response) => {
         }
     };
 
+    if (method === 'GET' && url.startsWith('/findAluno')) {
+        const urlParts = url.split('=');
+        const cpfAluno = urlParts[urlParts.length - 1];
+    
+        console.log(cpfAluno);
+    
+        try {
+            const userAluno = await UserAluno.findOne({ where: { userAluno_cpf: cpfAluno } });
+    
+          if (userAluno) {
+            response.writeHead(200, { 'Content-Type': 'application/json' });
+            response.end(JSON.stringify(userAluno));
+          } else {
+            // Usuário não encontrado
+            response.writeHead(404, { 'Content-Type': 'application/json' });
+            response.end(JSON.stringify({ error: 'Usuário não encontrado' }));
+          }
+        } catch (error) {
+          console.error('Erro ao obter usuário do banco de dados:', error);
+          response.writeHead(500, { 'Content-Type': 'application/json' });
+          response.end(JSON.stringify({ error: 'Erro interno do servidor' }));
+        } finally {
+          return;
+        }
+      }
+
     //rota para criação de usuários do tipo servidor
     if (method === 'POST' && url === '/addUserServidor'){
         
@@ -132,7 +158,7 @@ const server = http.createServer(async (request, response) => {
         });
     }
 
-    if (method === 'GET' && url === '/listContratos'){
+    if (method === 'GET' && url === '/listarContratos'){
         try {
             const allContratos = await Contrato.findAll();
             response.writeHead(200, { 'Content-Type': 'application/json' });
@@ -184,6 +210,48 @@ const server = http.createServer(async (request, response) => {
                 console.error('Erro ao processar a autenticação do aluno:', formData, error);
                 response.writeHead(500, { 'Content-Type': 'application/json' });
                 response.end(JSON.stringify({ message: 'Erro ao processar a autenticação do aluno' }));
+            }
+        });
+    }
+
+    if (method === 'POST' && url === '/loginAuthServidor') {
+        
+        let data = '';
+
+        request.on('data', (chunk) => {
+            data += chunk;
+        });
+    
+        request.on('end', async () => {
+            const formData = JSON.parse(data);
+            const loginCPF = formData.userServidor_cpf;
+            const password = formData.userServidor_Senha;
+    
+            try {
+                const servidor = await UserServidor.findOne({ where: { userServidor_cpf: loginCPF } });
+        
+                if (!servidor) {
+                    response.writeHead(401, { 'Content-Type': 'application/json' });
+                    response.end(JSON.stringify({ message: 'CPF do Servidor não encontrado' }));
+                    return; // Certifique-se de retornar após a resposta ser encerrada
+                }
+        
+                if (servidor.userServidor_Senha !== password) {
+                    response.writeHead(401, { 'Content-Type': 'application/json' });
+                    response.end(JSON.stringify({ message: 'CPF ou senha incorreto' }));
+                    return; // Certifique-se de retornar após a resposta ser encerrada
+                }
+        
+                const token = jwt.sign({ userId: servidor.userServidor_id, username: servidor.userServidor_nome }, 'seuSegredo', {
+                    expiresIn: '1h',
+                });
+        
+                response.writeHead(200, { 'Content-Type': 'application/json' });
+                response.end(JSON.stringify({ success: true, token }));
+            } catch (error) {
+                console.error('Erro ao processar a autenticação do Servidor:', formData, error);
+                response.writeHead(500, { 'Content-Type': 'application/json' });
+                response.end(JSON.stringify({ message: 'Erro ao processar a autenticação do Servidor' }));
             }
         });
     }
