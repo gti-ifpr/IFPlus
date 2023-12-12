@@ -1,15 +1,15 @@
 {
-  "userAluno_nome": "Mauro Jesus",
-  "userAluno_cpf": "57977029324",
-  "userAluno_email": "mauro.jesus@example.com",
-  "userAluno_telefone": "4112345678",
-  "userAluno_rg": "209052880",
-  "userAluno_Matricula": "20231111",
+  "userAluno_nome": "Tiago",
+  "userAluno_cpf": "57234029324",
+  "userAluno_email": "tiago@example.com",
+  "userAluno_telefone": "454754745678",
+  "userAluno_rg": "2090522423",
+  "userAluno_Matricula": "2234321111",
   "userAluno_Sexo": "Masculino",
   "userAluno_Ativo": true,
-  "userAluno_Senha": "tr1!_8976",
+  "userAluno_Senha": "poi890",
   "userAluno_Nascimento": "1990-10-10",
-  "userAluno_Curso": "Informática",
+  "userAluno_Curso": "GTI",
   "userAluno_Periodo": "4",
-  "userAluno_Disponibilidade": "Noite"
+  "userAluno_Disponibilidade": "Tarde"
 } 

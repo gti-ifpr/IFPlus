@@ -4,7 +4,7 @@ import Menu from "../../components/Global/menu/menu.js";
 
 const menuItems = [
     { text: 'Início', link: '/' },
-    { text: 'Login', link: '/Login' },
+    { text: 'Login', link: '/LoginAluno' },
     { text: 'Cadastrar como Servidor', link: '/cadastroServidor' }
   ];
 

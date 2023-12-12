@@ -2,7 +2,8 @@ import React from "react";
 import {Route, Routes} from 'react-router-dom';
 
 import Inicio from './pages/Inicio/Inicio.js'
-import Login from './pages/Login/Login.js'
+import LoginAluno from './pages/LoginAluno/Login.js'
+import LoginServidor from './pages/LoginServidor/LoginServidor.js'
 import CadastroAluno from './pages/CadastroAluno/cadastroAlunoPage.js'
 import CadastroServidor from './pages/CadastroServidor/cadastroServidor.js'
 import Contratos from './pages/Contratos/contratos.js'
@@ -13,13 +14,14 @@ import Vagas from './pages/Vagas/vagas.js'
 const MyRoutes = () => {
     return(
         <Routes>
-            {<Route path="/" element={<Inicio />} exact />}
-            {<Route path="/login" element={<Login />} exact />}
-            {<Route path="/cadastroAluno" element={<CadastroAluno/>} exact />}
-            {<Route path="/cadastroServidor" element={<CadastroServidor/>} exact />}
-            {<Route path="/contratos" element={<Contratos/>} exact />}
-            {<Route path="/Perfil" element={<Perfil/>} />}
-            {<Route path="/Vagas" element={<Vagas/>} />}
+            <Route path="/" element={<Inicio />} exact />
+            <Route path="/loginAluno" element={<LoginAluno />} exact />
+            <Route path="/loginServidor" element={<LoginServidor />} exact />
+            <Route path="/cadastroAluno" element={<CadastroAluno/>} exact />
+            <Route path="/cadastroServidor" element={<CadastroServidor/>} exact />
+            <Route path="/contratos" element={<Contratos/>} exact />
+            <Route path="/perfil/:cpf" element={<Perfil />} />
+            <Route path="/Vagas" element={<Vagas/>} />
         </Routes>
     )
 }

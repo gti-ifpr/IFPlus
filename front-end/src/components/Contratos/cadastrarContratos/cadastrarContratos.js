@@ -35,7 +35,7 @@ function CadastrarContrato() {
     const handleSubmit = async (event) => {
 
         try {
-            const response = await axios.post('http://localhost:3333/cadastroContrato', formData);
+            const response = await axios.post('http://localhost:3333/addContrato', formData);
             console.log("Servidor respondeu:", response.data);
         } catch (error) {
             console.error("Erro ao enviar dados do aluno:", error);
@@ -49,11 +49,19 @@ function CadastrarContrato() {
 
                 <div className="login-form-columns">
                     <div className="login-form-left">
-                        <div className="form-group"> {/* select aluno */}
-                            <input type="text" id="con_alu_nome" name="con_alu_nome" placeholder="Nome do aluno"
-                                value={formData.con_alu_nome} onChange={handleInputChange} required
+                        {/* nome do aluno */}
+                        <div className="form-group">
+                            <input type="text" id="conAlu" name="conAlu" placeholder="Nome do aluno"
+                                value={formData.conAlu} onChange={handleInputChange} required
                             />
                         </div>
+                        {/* Nome do servidor responsável no campus */}
+                        <div className="form-group"> {/* select aluno */}
+                            <input type="text" id="conSer" name="conSer" placeholder="Nome do Servidor responsável"
+                                value={formData.conSer} onChange={handleInputChange} required
+                            />
+                        </div>
+                        {/* Organização concedente do estágio */}
                         <div className="form-group"> {/* input organização concedente */}
                             <input type="text" id="con_organizacaoConcedente" name="con_organizacaoConcedente" placeholder="Organização concedente do estágio"
                                 value={formData.con_organizacaoConcedente} onChange={handleInputChange} required
@@ -97,16 +105,6 @@ function CadastrarContrato() {
                                     value={formData.con_supervisorEstagio} onChange={handleInputChange} required 
                             />
                         </div>
-                        <div className="form-group"> { /* Input Carga Horaria Semanal*/ }
-                            <input type="number" id="con_cargaHorariaSemanal" name="con_cargaHorariaSemanal" placeholder="Carga Horaria Semanal"
-                                    value={formData.con_cargaHorariaSemanal} onChange={handleInputChange} required 
-                            />
-                        </div>
-                        <div className="form-group"> { /* Input Valor da hora*/ }
-                            <input type="number" id="con_valorHora" name="con_valorHora" placeholder="Valor da Hora"
-                                    value={formData.con_valorHora} onChange={handleInputChange} required 
-                            />
-                        </div>
                         <div className="form-group"> { /* Input Horário de início da jornada*/ }
                             <input type="number" id="con_horarioInicio" name="con_horarioInicio" placeholder="Horário de início da jornada"
                                     value={formData.con_horarioInicio} onChange={handleInputChange} required 
@@ -117,17 +115,22 @@ function CadastrarContrato() {
                                     value={formData.con_horarioTermino} onChange={handleInputChange} required 
                             />
                         </div>
+                        <div className="form-group"> { /* Input Valor da hora*/ }
+                            <input type="number" id="con_valorHora" name="con_valorHora" placeholder="Valor da Hora"
+                                    value={formData.con_valorHora} onChange={handleInputChange} required 
+                            />
+                        </div>
                         <div className="form-group"> { /* Input Atividades desenvolvidas */ }
                             <input type="text" id="con_atividadesDesenvolvidas" name="con_atividadesDesenvolvidas" placeholder="Atividades desenvolvidas"
                                     value={formData.con_atividadesDesenvolvidas} onChange={handleInputChange} required 
                             />
                         </div>
-                        <div className="form-group"> { /* Input Carga Horaria Semanal*/ }
-                            <select id="con_status" name="con_status" value={formData.con_status}
+                        <div className="form-group">
+                            <select id="con_EstagioAtivo" name="con_EstagioAtivo" value={formData.con_EstagioAtivo}
                                 onChange={handleInputChange} required >
-                                <option value="">Selecione o status do estágio</option>
-                                <option value="Em Andamento">Em Andamento</option>
-                                <option value="Finalizado">Finalizado</option>
+                                <option value="">Status do Estágio</option>
+                                <option value="1">Em Andamento</option>
+                                <option value="0">Finalizado</option>
                             </select>
                         </div>
                     </div>

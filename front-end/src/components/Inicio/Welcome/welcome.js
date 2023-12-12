@@ -13,8 +13,11 @@ function Welcome () {
                 </div>
                 <div className="welcomeRight">
                     <img src={Logo} alt="Logo do IFPR"></img>
-                    <h1>Bem-Vindos ao IFPLUS!</h1>
-                    <Link to="/login" className="buttonWelcome">Login</Link>
+                    <h1>Bem-Vindo ao IFPLUS!</h1>
+                    <div className="container-buttons">
+                        <Link to="/loginAluno" className="buttonWelcome">Logar como Aluno</Link>
+                        <Link to="/loginServidor" className="buttonWelcome">Logar como Servidor</Link>
+                    </div>
                 </div>
             </div>
             <hr></hr>
